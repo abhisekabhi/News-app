@@ -13,7 +13,7 @@ const News = (props) => {
     const [loading, setLoading] = useState(0)
     const [page, setPage] = useState(1)
     const [totalResults, setTotalResults] = useState(0)
-    
+
     const capitalizeFirstLetter = (string) => {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
@@ -34,10 +34,10 @@ const News = (props) => {
         props.setProgress(100);
     }
 
-    
+
 
     useEffect(() => {
-         document.title = `${capitalizeFirstLetter(props.category)} - NewsAbhi`
+        document.title = `${capitalizeFirstLetter(props.category)} - NewsAbhi`
         updateNews();
 
     }, [])
@@ -47,21 +47,21 @@ const News = (props) => {
 
 
 
-    const handlePrevClick = async () => {
-        setPage(page - 1)
-        updateNews();
-    }
+    // const handlePrevClick = async () => {
+    //     setPage(page - 1)
+    //     updateNews();
+    // }
 
-    const handleNextClick = async () => {
-        setPage(page + 1)
-        updateNews();
-    }
+    // const handleNextClick = async () => {
+    //     setPage(page + 1)
+    //     updateNews();
+    // }
 
 
 
     const fetchMoreData = async () => {
 
-        const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${page+1}&pageSize=${props.pageSize}`;
+        const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${page + 1}&pageSize=${props.pageSize}`;
         setPage(page + 1)
 
         let data = await fetch(url);
@@ -75,7 +75,7 @@ const News = (props) => {
     return (
         <>
 
-            <h2 className="text-center" style={{margin:'35px 0px', marginTop: '70px' }}>NewsAbhi - Top  {capitalizeFirstLetter(props.category)} Headlines</h2>
+            <h2 className="text-center" style={{ margin: '35px 0px', marginTop: '70px' }}>NewsAbhi - Top  {capitalizeFirstLetter(props.category)} Headlines</h2>
 
             {loading && <Spinnre />}
 
@@ -114,7 +114,9 @@ News.defaultProps = {
     pageSize: 8,
     category: 'general'
 }
-News.propTypes = {
+
+
+ News.prototype= {
     country: PropTypes.string,
     pageSize: PropTypes.number,
     category: PropTypes.string,
