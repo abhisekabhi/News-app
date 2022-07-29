@@ -8,9 +8,9 @@ import News from './components/News';
 import {
   BrowserRouter as Router,
   Routes,
-  Switch,
-  Route,
-  Link
+  
+  Route
+  
 } from "react-router-dom";
 import LoadingBar from 'react-top-loading-bar'
 
